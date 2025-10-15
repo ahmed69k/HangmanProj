@@ -4,7 +4,9 @@
       v-for="letter in letters"
       :key="letter"
       class="key"
+      :class="{guessed: store.state.guessedLetters.includes(letter)}"
       @click="pickLetter(letter)"
+      :disabled="store.state.guessedLetters.includes(letter)"
     >
       {{ letter.toUpperCase() }}
     </button>
@@ -16,10 +18,8 @@ import { useStore } from 'vuex';
 const store = useStore()
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
 function pickLetter(letter){
-    
-    store.state.guessedLetters.push(letter)
-    console.log(store.state.guessedLetters)
-    
+   store.commit('guessLetter',letter) 
+   console.log(store.state.guessedLetters)
 }
 </script>
 
@@ -40,5 +40,11 @@ function pickLetter(letter){
   border-radius: 6px;
   cursor: pointer;
   font-size: 18px;
+}
+.key.guessed {
+  text-decoration: line-through;
+  background-color: #d3d3d3;
+  color: #666;
+  cursor: not-allowed;
 }
 </style>

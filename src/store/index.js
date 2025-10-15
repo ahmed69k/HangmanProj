@@ -8,7 +8,8 @@ export default createStore({
         guessedLetters: [],
         gameOver: false,
         win: false,
-        difficulty: null
+        difficulty: null,
+        mostRecentlyGuessed: ''
     },
     mutations:{
         setDifficulty(state,input){
@@ -34,6 +35,27 @@ export default createStore({
             state.guessedLetters = [];
             state.gameOver = false;
             state.win = false;
+        },
+        guessLetter(state,letter){
+            state.mostRecentlyGuessed = letter
+            if(state.guessedLetters.includes(letter)||state.gameOver){
+                return
+            }
+            state.guessedLetters.push(letter)
+            if(!state.word.includes(letter)){
+                state.attemptsLeft--;
+                
+                if(state.attemptsLeft<=0){
+                    state.gameOver = true;
+                }
+            }
+            else{
+                const allGuessed = state.word.split('').every(ch => state.guessedLetters.includes(ch))
+                if(allGuessed){
+                    state.win = true;
+                    state.gameOver = true;
+                }
+            }
         }
     },
     actions: {
@@ -43,8 +65,9 @@ export default createStore({
                 const res = await fetch(url)
                 const data = await res.json()
                 commit('setWord', data[0])
-                if(data[0]==null){
-                    console.log("nunyha")
+                if(!data || !data[0]){
+                    console.warn("No word returned!")
+                    return;
                 }
                 console.log(data[0])
                 return data[0];
