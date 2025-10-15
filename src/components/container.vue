@@ -1,11 +1,15 @@
 <template>
-    <h1>Hello, World!</h1>
+    <keyboard></keyboard>
+    <man></man>
+    <words></words>
 </template>
-<script>
 
+<script setup>
+    import keyboard from './keyboard.vue';
+    import man from './man.vue';
+    import words from './words.vue';
 </script>
+
 <style>
-h1{
-    color: black;
-}
+
 </style>
