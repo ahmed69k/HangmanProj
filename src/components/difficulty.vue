@@ -55,7 +55,7 @@ function startGame(diff){
 .container{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     align-items: center;
     justify-content: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

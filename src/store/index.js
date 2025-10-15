@@ -45,6 +45,7 @@ export default createStore({
             if(!state.word.includes(letter)){
                 state.attemptsLeft--;
                 
+                
                 if(state.attemptsLeft<=0){
                     state.gameOver = true;
                 }

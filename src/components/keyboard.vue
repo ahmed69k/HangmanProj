@@ -16,10 +16,12 @@
 <script setup>
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+import { onMounted, onUnmounted } from 'vue';
 const router = useRouter()
 const store = useStore()
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
 function pickLetter(letter){
+  if(!letters.includes(letter)) return
 
    store.commit('guessLetter',letter) 
    console.log(store.state.guessedLetters)
@@ -28,6 +30,18 @@ function pickLetter(letter){
    }
    
 }
+function handleKeyPress(e){
+  const key = e.key.toLowerCase();
+  pickLetter(key);
+}
+onMounted(()=>{
+window.addEventListener('keydown',handleKeyPress)
+})
+onUnmounted(()=>{
+  window.removeEventListener('keydown',handleKeyPress)
+})
+  
+
 </script>
 
 <style scoped>
