@@ -60,6 +60,9 @@ const wrongGuesses = computed(() => {
     justify-content: center;
     align-items: center;
 }
+.mainContainer h2{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 .mainContainer__left{
     display: flex;
     flex-direction: column;

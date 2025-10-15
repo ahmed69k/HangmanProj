@@ -3,7 +3,7 @@
         <h1 class="navbar__h1"><RouterLink to="/">Hangman</RouterLink> </h1>
         <ul class="navbar__links">
             <li><RouterLink to="/difficulty">Play</RouterLink> </li>
-            <li><RouterLink to="/">About</RouterLink> </li>
+            <li><RouterLink to="/about">About</RouterLink> </li>
         </ul>
     </nav>
 </template>

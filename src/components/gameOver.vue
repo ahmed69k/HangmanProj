@@ -3,8 +3,8 @@
     <audio ref="winSound" src="public/win.mp3"></audio>
     <audio ref="loseSound" src="/lose.mp3"></audio>
     <div class="container__text">
-        <h1 v-if="store.state.win" style="color: green;">You Win!</h1>
-        <h1 v-else style="color: red;">You Lose!</h1>
+        <h1 v-if="store.state.win" style="color: green;">You Win! 👅</h1>
+        <h1 v-else style="color: red;">You Lose! 🤣</h1>
         <div class="container__text__inner">
             <h2>The word was:</h2>
             <h2 class="rainbow-glow"> {{ store.state.word[0].toUpperCase() + store.state.word.slice(1) }}</h2>

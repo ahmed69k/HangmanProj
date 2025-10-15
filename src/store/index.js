@@ -61,7 +61,7 @@ export default createStore({
     },
     actions: {
         async fetchRandomWord({state, commit}){
-            const url = `https://random-word-api.herokuapp.com/word?number=1&length=${state.wordLength}`
+            const url = `https://random-word-api.vercel.app/api?words=1&length=${state.wordLength}`
             try{
                 const res = await fetch(url)
                 const data = await res.json()
