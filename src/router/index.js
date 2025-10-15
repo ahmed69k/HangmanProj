@@ -2,11 +2,13 @@ import { createRouter, createWebHistory } from "vue-router";
 import welcome from "@/components/welcome.vue";
 import container from "@/components/container.vue";
 import difficulty from "@/components/difficulty.vue";
+import gameOver from "@/components/gameOver.vue";
 
 const routes = [
     {path: '/', name: 'Start', component: welcome},
     {path:'/difficulty', name: 'Difficulties', component:difficulty},
-    {path: '/play', name: 'Hangman', component: container}
+    {path: '/play', name: 'Hangman', component: container},
+    {path: '/game-over', name:'Game Over', component: gameOver}
 ]
 
 const router = createRouter({

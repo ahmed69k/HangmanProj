@@ -15,11 +15,18 @@
 
 <script setup>
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 const store = useStore()
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
 function pickLetter(letter){
+
    store.commit('guessLetter',letter) 
    console.log(store.state.guessedLetters)
+   if(store.state.gameOver){
+    router.push('/game-over')
+   }
+   
 }
 </script>
 
