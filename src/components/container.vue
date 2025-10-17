@@ -1,7 +1,7 @@
 <template>
     <div class="mainContainer">
         <div class="mainContainer__left">
-        <man></man>
+        <man :wrongGuesses="wrongGuesses.length" :difficulty="store.state.difficulty"></man>
         <h2>{{ wrongGuesses }}</h2>
         </div>
         <div class="mainContainer__right">
@@ -37,11 +37,13 @@
     const router = useRouter()
 
 const wrongGuesses = computed(() => {
-  if (!store.state.word) return []
+  if (!store.state.word) return [];
   return store.state.guessedLetters.filter(
     letter => !store.state.word.includes(letter)
-  )
-})
+  );
+});
+
+const isGameOver = computed(() => wrongGuesses.value.length >= 6);
 
 </script>
 
