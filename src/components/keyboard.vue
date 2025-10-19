@@ -25,9 +25,6 @@ function pickLetter(letter){
 
    store.commit('guessLetter',letter) 
    console.log(store.state.guessedLetters)
-   if(store.state.gameOver){
-    router.push('/game-over')
-   }
    
 }
 function handleKeyPress(e){
