@@ -7,7 +7,10 @@
 <script setup>
 import { useRouter } from 'vue-router';
 const router = useRouter()
+const click = new Audio('/click.mp3')
 function route(){
+    click.currentTime = 0;
+    click.play();
     router.push('/difficulty')
 }
 </script>
@@ -30,9 +33,11 @@ function route(){
     height: 50px;
     font-size: 30px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    transition: background-color 0.2s ease
+    transition: background-color 0.2s ease;
+    transition: size 0.2s ease
 }
 .container__button:hover{
     background-color: rgb(210, 185, 154);
+    size: 2rem;
 }
 </style>

@@ -1,4 +1,8 @@
 <template>
+    <div style="display: flex; flex-direction: row;justify-content: flex-end">
+        <button @click="muteAudio" v-if="!isMuted" class="muteButton">🔈</button>
+    <button v-else @click="unmuteAudio" class="muteButton"> 🔇</button>
+    </div>
     <div class="mainContainer">
         <div class="mainContainer__left">
         <man :wrongGuesses="wrongGuesses.length" :difficulty="store.state.difficulty"></man>
@@ -16,6 +20,7 @@
           loop
           controls
           style="display: none;"
+          volume = "0.1"
         >
         </audio>
         </div>
@@ -40,8 +45,33 @@
     import { useStore } from 'vuex';
     import { useRouter } from 'vue-router';
     import { computed } from 'vue';
+    import { ref } from 'vue';
+    import { onMounted } from 'vue';
     const store = useStore()
     const router = useRouter()
+    const bgAudio = ref(null)
+    const isMuted = ref(false)
+    const click = new Audio('/click.mp3')
+
+    function muteAudio(){
+      if(bgAudio.value){
+        click.play()
+        bgAudio.value.volume = 0;
+        isMuted.value = true;
+      }
+    }
+    onMounted(()=>{
+      if(bgAudio.value){
+        bgAudio.value.volume = 0.1;
+      }
+    })
+    function unmuteAudio(){
+      if(bgAudio.value){
+        click.play()
+        bgAudio.value.volume = 0.1;
+        isMuted.value = false;
+      }
+    }
 
 const wrongGuesses = computed(() => {
   if (!store.state.word) return [];
@@ -62,7 +92,7 @@ const isGameOver = computed(() => {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 80vh;
     gap: 200px;
 }
 .mainContainer__right{
@@ -79,5 +109,15 @@ const isGameOver = computed(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.muteButton{
+  border: 0;
+  background-color: transparent;
+  font-size: 50px;
+  height: 50px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 10px;
+  margin-right: 20px;
 }
 </style>

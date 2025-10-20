@@ -23,7 +23,10 @@ import { useRouter } from 'vue-router';
 const store = useStore()
 const router = useRouter()
 const difficulties = ['easy','medium','hard']
+const click = new Audio('/click.mp3')
 function startGame(diff){
+    click.currentTime = 0;
+    click.play();
     store.commit('setDifficulty', diff)
     store.commit('setAttempts',diff)
     store.dispatch('fetchRandomWord')

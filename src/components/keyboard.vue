@@ -20,9 +20,13 @@ import { onMounted, onUnmounted } from 'vue';
 const router = useRouter()
 const store = useStore()
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+const click = new Audio('/kclick.mp3')
+click.volume=0.5
 function pickLetter(letter){
   if(!letters.includes(letter)) return
-
+  const sound = new Audio('/kclick.mp3');
+  sound.volume = 0.9;
+  sound.play();
    store.commit('guessLetter',letter) 
    console.log(store.state.guessedLetters)
    

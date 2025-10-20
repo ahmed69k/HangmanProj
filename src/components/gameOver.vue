@@ -29,11 +29,14 @@ const router = useRouter()
 const store = useStore()
 const winSound = ref(null)
 const loseSound = ref(null)
+const click = new Audio('/click.mp3')
 
 function playAgain(){
+    click.play()
     router.push('/difficulty')
 }
 function backToMenu(){
+  click.play()
     router.push('/')
 }
 
